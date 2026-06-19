@@ -1,0 +1,69 @@
+class Solution {
+    public int getLength(int[] nums) {
+        int n = nums.length;
+        HashMap<Integer, Integer> map = new HashMap<>();
+        int ids = 0;
+        int[] compressed = new int[n];
+        for (int i = 0; i < n; i++) {
+            if (!map.containsKey(nums[i])) {
+                map.put(nums[i], ids++);
+            }
+            compressed[i] = map.get(nums[i]);
+        }
+        
+        int maxLength = 1;
+        int[] cnt = new int[ids];
+        int[] freq = new int[n + 1];
+        
+        for (int i = 0; i < n; i++) {
+            Arrays.fill(cnt, 0);
+            Arrays.fill(freq, 0);
+            
+            int distinctCnt = 0;
+            int distinctFreqs = 0;
+            
+            for (int j = i; j < n; j++) {
+                int x = compressed[j];
+                int oldCnt = cnt[x];
+                
+                if (oldCnt > 0) {
+                    freq[oldCnt]--;
+                    if (freq[oldCnt] == 0) {
+                        distinctFreqs--;
+                    }
+                } else {
+                    distinctCnt++;
+                }
+                
+                int newCnt = oldCnt + 1;
+                cnt[x] = newCnt;
+                if (freq[newCnt] == 0) {
+                    distinctFreqs++;
+                }
+                freq[newCnt]++;
+                if (distinctCnt == 1) {
+                    int currentLength = j - i + 1;
+                    if (currentLength > maxLength) {
+                        maxLength = currentLength;
+                    }
+                } else if (distinctFreqs == 2) {
+                    boolean valid = false;
+                    
+                    if (newCnt * 2 <= n && freq[newCnt] + freq[newCnt * 2] == distinctCnt) {
+                        valid = true;
+                    } else if (newCnt % 2 == 0 && freq[newCnt] + freq[newCnt / 2] == distinctCnt) {
+                        valid = true;
+                    }
+                    
+                    if (valid) {
+                        int currentLength = j - i + 1;
+                        if (currentLength > maxLength) {
+                            maxLength = currentLength;
+                        }
+                    }
+                }
+            }
+        }
+        return maxLength;
+    }
+}
