@@ -24,9 +24,9 @@ To keep things organized and easy to navigate, the solutions are categorized by 
 *(Note: I update these numbers periodically!)*
 
 
-* **LeetCode Profile:** [Your LeetCode Username](https://leetcode.com/your-username)
-* **LinkedIn:** [Your Name](https://linkedin.com/in/your-profile)
-* **Portfolio:** [Your Website](https://your-website.com)
+* **LeetCode Profile:** [Arihant jain]([https://leetcode.com/your-username](https://leetcode.com/u/gmTMxyLD2W/))
+* **LinkedIn:** [Arihant Jain]([https://linkedin.com/in/your-profile](https://www.linkedin.com/in/arihant-jain-372556317/))
+
 
 ---
 *“First solve the problem. Then, write the code.” – John Johnson*
